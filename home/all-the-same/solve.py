@@ -1,10 +1,16 @@
+# First tasks. check if all elements are the same
+
 from typing import List, Any
 
 
 def all_the_same(elements: List[Any]) -> bool:
+    # if size is 0 return True
     if len(elements) > 0:
+        # get the first element
         first = elements[0]
+        # check is all elemtns are equal to the first elemnt
         for e in elements:
+            # stop if one element is diffirent and return false
             if e != first:
                 return False
     return True

@@ -20,18 +20,23 @@ import re
 def checkio(text: str) -> str:
 
     if len(text) > 10 ** 5: return False
-    text = re.sub('[^a-z]+','',text.lower())
+    # get lower text and remove all no-letters
+    text_lower = re.sub('[^a-z]+','',text.lower())
     
     counting={}
-    for l in sorted(set(re.findall(r'([a-z])',text))):
-        counting[l] = text.count(l)
+    # create a sorted set with only letters present in text, loop over the set and count
+    # and count hte letter in text
+    for l in sorted(set(re.findall(r'([a-z])',text_lower))):
+        counting[l] = text_lower.count(l)
+    # counting is a sorted list on the key, max will return the first max (if 'a' and 'b' have
+    # have the same count, a will be returned by max). Order by value
     return max(counting, key=counting.get)
 
 if __name__ == '__main__':
     print("Example:")
     print(checkio("Hello World!"))
 
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio("Hello World!") == "l", "Hello test"
     assert checkio("How do you do?") == "o", "O is most wanted"
     assert checkio("One") == "e", "All letter only once."

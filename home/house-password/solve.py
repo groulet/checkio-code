@@ -27,15 +27,15 @@ re.match("[a-zA-Z0-9]+", password)
 import re
 
 def checkio(data: str) -> bool:
-    
+    # Check all conditions with regex
+    # 1: Start with at least 10 alphanumeric
+    # 2: search for at least one number [0-9]
+    # 3: search for at least one lower letter [a-z]
+    # 4: search for at least one capital letter [A-Z]
     return all(bool(re.search(reg,data)) for reg in [r'^[a-zA-Z0-9]{10,}',r'[0-9]',r'[a-z]',r'[A-Z]'])
 
-#Some hints
-#Just check all conditions
-
-
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio('A1213pokl') == False, "1st example"
     assert checkio('bAse730onE4') == True, "2nd example"
     assert checkio('asasasasasasasaas') == False, "3rd example"
