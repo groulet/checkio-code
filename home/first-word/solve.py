@@ -28,8 +28,8 @@ def first_word(text: str) -> str:
     """
         returns the first word in a given text.
     """
-    # search a pattern with a-z A-Z and ' and return the first match (.group(1))
-    return re.search(r'([a-zA-Z\']+)',text).group(1)
+    # search a pattern with a-z A-Z (\w) and ' and return the first match (.group(1))
+    return re.search(r"([\w']+)",text).group(1)
 
 
 if __name__ == '__main__':
