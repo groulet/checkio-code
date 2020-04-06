@@ -25,9 +25,10 @@ Precondition: both given ints should be between -1000 and 1000
 
 from typing import Tuple
 from functools import reduce
-import operator
+from operator import add
+
 def sum_by_types(items: list) -> Tuple[str, int]:
-    return (reduce(operator.add,filter(lambda x: type(x)==str,items),''), reduce(operator.add,filter(lambda x: type(x)==int,items),0))
+    return reduce(add,filter(lambda x:isinstance(x,str),items),''), reduce(add,filter(lambda x: isinstance(x,int),items),0)
 
 
 if __name__ == '__main__':
